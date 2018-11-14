@@ -118,6 +118,8 @@ public class CallActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     call.answer();
                     mIncomingCallLayout.setVisibility(View.INVISIBLE);
+                    call.addCallListener(new SinchCallListener());
+                    button.setText("Hang Up");
                 }
             });
             mIncomingCallLayout.findViewById(R.id.button_decline_call).setOnClickListener(new View.OnClickListener() {
@@ -125,11 +127,10 @@ public class CallActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     call.hangup();
                     mIncomingCallLayout.setVisibility(View.INVISIBLE);
+                    button.setText("Call");
                 }
             });
-            call.answer();
-            call.addCallListener(new SinchCallListener());
-            button.setText("Hang Up");
+
         }
     }
 }
